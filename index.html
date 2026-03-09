@@ -53,12 +53,13 @@
             item.className = 'accordion-item bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden';
             
             // Масив підпунктів (задач)
+            // Оновлено шлях: тепер посилання веде на файл номер.підномер.html
             const subItems = [
-                { label: `${number}.1`, link: `./${number}.1/index.html` },
-                { label: `${number}.2`, link: `./${number}.2/index.html` },
-                { label: `${number}.3`, link: `./${number}.3/index.html` },
-                { label: `${number}.4`, link: `./${number}.4/index.html` },
-                { label: `${number}.5`, link: `./${number}.5/index.html` }
+                { label: `${number}.1`, link: `./${number}.1.html` },
+                { label: `${number}.2`, link: `./${number}.2.html` },
+                { label: `${number}.3`, link: `./${number}.3.html` },
+                { label: `${number}.4`, link: `./${number}.4.html` },
+                { label: `${number}.5`, link: `./${number}.5.html` }
             ];
 
             // Генеруємо HTML для списку задач
@@ -97,7 +98,7 @@
             const parent = element.parentElement;
             const isActive = parent.classList.contains('active');
             
-            // Закриваємо всі відкриті акордеони перед відкриттям нового (акордеон-стиль)
+            // Закриваємо всі відкриті акордеони перед відкриттям нового
             document.querySelectorAll('.accordion-item').forEach(item => {
                 item.classList.remove('active');
             });
