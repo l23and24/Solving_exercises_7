@@ -44,12 +44,15 @@
     <script>
         const container = document.getElementById('navigation-container');
 
-        // Функція для створення блоку меню
+        /**
+         * Функція для створення блоку меню для кожного номера
+         * @param {number} number - Номер уроку
+         */
         function createMenuItem(number) {
             const item = document.createElement('div');
             item.className = 'accordion-item bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden';
             
-            // Масив підпунктів (уроків)
+            // Масив підпунктів (задач)
             const subItems = [
                 { label: `${number}.1`, link: `./${number}.1/index.html` },
                 { label: `${number}.2`, link: `./${number}.2/index.html` },
@@ -58,9 +61,10 @@
                 { label: `${number}.5`, link: `./${number}.5/index.html` }
             ];
 
+            // Генеруємо HTML для списку задач
             const subItemsHtml = subItems.map(sub => `
                 <a href="${sub.link}" class="block px-6 py-3 text-blue-600 hover:bg-blue-50 hover:text-blue-800 transition-colors border-b border-gray-50 last:border-0">
-                    📖 Перейти до уроку ${sub.label}
+                    📝 Перейти до задачі номер ${sub.label}
                 </a>
             `).join('');
 
@@ -85,17 +89,20 @@
             container.appendChild(createMenuItem(i));
         }
 
-        // Функція перемикання акордеона
+        /**
+         * Функція для відкриття/закриття акордеона
+         * @param {HTMLElement} element - Кнопка акордеона
+         */
         function toggleAccordion(element) {
             const parent = element.parentElement;
             const isActive = parent.classList.contains('active');
             
-            // Закриваємо всі інші
+            // Закриваємо всі відкриті акордеони перед відкриттям нового (акордеон-стиль)
             document.querySelectorAll('.accordion-item').forEach(item => {
                 item.classList.remove('active');
             });
 
-            // Відкриваємо поточний
+            // Якщо натиснутий був неактивним, відкриваємо його
             if (!isActive) {
                 parent.classList.add('active');
             }
